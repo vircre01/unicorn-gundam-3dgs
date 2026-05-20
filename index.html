@@ -52,40 +52,7 @@
         </script>
     </head>
     <body>
-        <div id="vircre-info-panel">
-  <button id="vircre-close-btn">×</button>
-
-  <h1>お台場 ユニコーンガンダム 3DGS</h1>
-
-  <p>
-    実物大ユニコーンガンダムを3D Gaussian Splattingで再現したデモです。
-    マウス操作で自由に視点を動かして確認できます。
-  </p>
-
-  <a href="https://vircre.co.jp/" target="_blank" rel="noopener noreferrer">
-    Vircreのサイトを見る
-  </a>
-</div>
-
-<button id="vircre-open-btn">説明を見る</button>
-
-<script>
-  document.addEventListener("DOMContentLoaded", function () {
-    const panel = document.getElementById("vircre-info-panel");
-    const closeBtn = document.getElementById("vircre-close-btn");
-    const openBtn = document.getElementById("vircre-open-btn");
-
-    closeBtn.addEventListener("click", function () {
-      panel.style.display = "none";
-      openBtn.style.display = "block";
-    });
-
-    openBtn.addEventListener("click", function () {
-      panel.style.display = "block";
-      openBtn.style.display = "none";
-    });
-  });
-</script>
+        
         <canvas id="application-canvas"></canvas>
 
         <div id="ui">
@@ -594,5 +561,118 @@
                 const viewer = await main(canvas, settingsJson, config);
             });
         </script>
+        <!-- Vircre UI Overlay -->
+<div id="vircre-info-panel">
+  <button id="vircre-close-btn" type="button">×</button>
+
+  <h1>お台場 ユニコーンガンダム 3DGS</h1>
+
+  <p>
+    実物大ユニコーンガンダムを3D Gaussian Splattingで再現したデモです。
+    マウス操作で自由に視点を動かして確認できます。
+  </p>
+
+  <a href="https://vircre.co.jp/" target="_blank" rel="noopener noreferrer">
+    Vircreのサイトを見る
+  </a>
+</div>
+
+<button id="vircre-open-btn" type="button">説明を見る</button>
+
+<style>
+  #vircre-info-panel {
+    position: fixed !important;
+    top: 24px !important;
+    left: 24px !important;
+    width: 330px !important;
+    padding: 20px !important;
+    background: rgba(0, 0, 0, 0.72) !important;
+    color: #ffffff !important;
+    font-family: sans-serif !important;
+    border-radius: 14px !important;
+    z-index: 2147483647 !important;
+    line-height: 1.6 !important;
+    box-sizing: border-box !important;
+    pointer-events: auto !important;
+  }
+
+  #vircre-info-panel h1 {
+    font-size: 18px !important;
+    margin: 0 0 12px !important;
+    color: #ffffff !important;
+  }
+
+  #vircre-info-panel p {
+    font-size: 14px !important;
+    margin: 0 0 16px !important;
+    color: #ffffff !important;
+  }
+
+  #vircre-info-panel a {
+    display: inline-block !important;
+    padding: 10px 14px !important;
+    background: #ffffff !important;
+    color: #111111 !important;
+    text-decoration: none !important;
+    border-radius: 999px !important;
+    font-size: 14px !important;
+  }
+
+  #vircre-close-btn {
+    position: absolute !important;
+    top: 8px !important;
+    right: 10px !important;
+    background: transparent !important;
+    color: #ffffff !important;
+    border: none !important;
+    font-size: 24px !important;
+    cursor: pointer !important;
+  }
+
+  #vircre-open-btn {
+    display: none;
+    position: fixed !important;
+    top: 24px !important;
+    left: 24px !important;
+    padding: 10px 16px !important;
+    background: rgba(0, 0, 0, 0.72) !important;
+    color: #ffffff !important;
+    border: 1px solid rgba(255, 255, 255, 0.4) !important;
+    border-radius: 999px !important;
+    font-family: sans-serif !important;
+    font-size: 14px !important;
+    cursor: pointer !important;
+    z-index: 2147483647 !important;
+    pointer-events: auto !important;
+  }
+</style>
+
+<script>
+  window.addEventListener("load", function () {
+    const panel = document.getElementById("vircre-info-panel");
+    const closeBtn = document.getElementById("vircre-close-btn");
+    const openBtn = document.getElementById("vircre-open-btn");
+
+    if (!panel || !closeBtn || !openBtn) return;
+
+    panel.addEventListener("pointerdown", function (e) {
+      e.stopPropagation();
+    });
+
+    openBtn.addEventListener("pointerdown", function (e) {
+      e.stopPropagation();
+    });
+
+    closeBtn.addEventListener("click", function () {
+      panel.style.display = "none";
+      openBtn.style.display = "block";
+    });
+
+    openBtn.addEventListener("click", function () {
+      panel.style.display = "block";
+      openBtn.style.display = "none";
+    });
+  });
+</script>
     </body>
 </html>
