@@ -52,6 +52,40 @@
         </script>
     </head>
     <body>
+        <div id="vircre-info-panel">
+  <button id="vircre-close-btn">×</button>
+
+  <h1>お台場 ユニコーンガンダム 3DGS</h1>
+
+  <p>
+    実物大ユニコーンガンダムを3D Gaussian Splattingで再現したデモです。
+    マウス操作で自由に視点を動かして確認できます。
+  </p>
+
+  <a href="https://vircre.co.jp/" target="_blank" rel="noopener noreferrer">
+    Vircreのサイトを見る
+  </a>
+</div>
+
+<button id="vircre-open-btn">説明を見る</button>
+
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    const panel = document.getElementById("vircre-info-panel");
+    const closeBtn = document.getElementById("vircre-close-btn");
+    const openBtn = document.getElementById("vircre-open-btn");
+
+    closeBtn.addEventListener("click", function () {
+      panel.style.display = "none";
+      openBtn.style.display = "block";
+    });
+
+    openBtn.addEventListener("click", function () {
+      panel.style.display = "block";
+      openBtn.style.display = "none";
+    });
+  });
+</script>
         <canvas id="application-canvas"></canvas>
 
         <div id="ui">
